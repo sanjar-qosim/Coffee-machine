@@ -9,7 +9,7 @@ public class Storage {
     private double ground;
 
     public void addWater(double water) {
-        if (this.water > 500) {
+        if (this.water + water > 500) {
             System.out.println("Запас воды полная!");
         } else {
             this.water += water;

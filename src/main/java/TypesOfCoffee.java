@@ -3,7 +3,8 @@ public class TypesOfCoffee {
     Storage storage = new Storage();
 
     public void espresso(){
-        Storage storage = new Storage();
+        storage.addWater(100);
+        storage.addGrain(100);
         if (storage.checkGround() < 100) {
             if (storage.checkWater() > 30) {
                 if (storage.checkGrain() > 2){
