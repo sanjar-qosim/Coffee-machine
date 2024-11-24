@@ -1,13 +1,15 @@
 public class TypesOfCoffee {
 
-    public void espresso(){
+    Storage storage = new Storage();
 
-        if (CoffeeGrounds.checkGround() < 100) {
-            if (WaterSupply.checkWater() > 30) {
-                if (GrainSupply.checkGrain() > 2){
-                    WaterSupply.getWater(30);
-                    GrainSupply.getGrain(2);
-                    CoffeeGrounds.addGround(5);
+    public void espresso(){
+        Storage storage = new Storage();
+        if (storage.checkGround() < 100) {
+            if (storage.checkWater() > 30) {
+                if (storage.checkGrain() > 2){
+                    storage.getWater(30);
+                    storage.getGrain(2);
+                    storage.addGround(5);
                     System.out.println("Ваше ароматное espresso готово!");
                 } else {
                     System.out.println("Не хватает зерна!");
@@ -22,12 +24,12 @@ public class TypesOfCoffee {
 
     public void americano(){
 
-        if (CoffeeGrounds.checkGround() < 100) {
-            if (WaterSupply.checkWater() > 30) {
-                if (GrainSupply.checkGrain() > 2){
-                    WaterSupply.getWater(50);
-                    GrainSupply.getGrain(2);
-                    CoffeeGrounds.addGround(5);
+        if (storage.checkGround() < 100) {
+            if (storage.checkWater() > 30) {
+                if (storage.checkGrain() > 2){
+                    storage.getWater(50);
+                    storage.getGrain(2);
+                    storage.addGround(5);
                     System.out.println("Ваше ароматное americano готово!");
                 } else {
                     System.out.println("Не хватает зерна!");
@@ -41,15 +43,15 @@ public class TypesOfCoffee {
     }
 
     public void cappuccino(){
-        if (CoffeeGrounds.checkGround() < 100) {
-            if (WaterSupply.checkWater() > 30) {
-                if (GrainSupply.checkGrain() > 2) {
-                    if (MilkSupply.checkMilk() > 60) {
-                        WaterSupply.getWater(50);
-                    GrainSupply.getGrain(2);
-                    MilkSupply.getMilk(60);
-                    CoffeeGrounds.addGround(5);
-                    System.out.println("Ваше ароматное cappuccino готово!");
+        if (storage.checkGround() < 100) {
+            if (storage.checkWater() > 30) {
+                if (storage.checkGrain() > 2) {
+                    if (storage.checkMilk() > 60) {
+                        storage.getWater(50);
+                        storage.getGrain(2);
+                        storage.getMilk(60);
+                        storage.addGround(5);
+                        System.out.println("Ваше ароматное cappuccino готово!");
                     } else {
                         System.out.println("Недостаточно молока!");
                     }
@@ -65,13 +67,13 @@ public class TypesOfCoffee {
     }
 
     public void latte(){
-        if (CoffeeGrounds.checkGround() < 100) {
-            if (WaterSupply.checkWater() > 30) {
-                if (GrainSupply.checkGrain() > 2) {
-                    if (MilkSupply.checkMilk() > 100) {
-                        GrainSupply.getGrain(2);
-                        MilkSupply.getMilk(100);
-                        CoffeeGrounds.addGround(5);
+        if (storage.checkGround() < 100) {
+            if (storage.checkWater() > 30) {
+                if (storage.checkGrain() > 2) {
+                    if (storage.checkMilk() > 100) {
+                        storage.getGrain(2);
+                        storage.getMilk(100);
+                        storage.addGround(5);
                         System.out.println("Ваше ароматное latte готово!");
                     } else {
                         System.out.println("Недостаточно молока!");

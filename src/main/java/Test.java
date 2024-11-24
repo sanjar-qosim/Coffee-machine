@@ -1,29 +1,29 @@
 public class Test {
 
     public static void main(String[] args) {
+        Storage storage = new Storage();
         TypesOfCoffee coffee = new TypesOfCoffee();
 
 //        Testing espresso
-        WaterSupply.addWater(100);
-        GrainSupply.addGrain(100);
-        coffee.espresso();
+        storage.addWater(100);
+        storage.checkWater();
 
 //        Testing americano
-        coffee.americano();
+//        coffee.americano();
 
 //        Testing cappuccino
-        WaterSupply.addWater(100);
-        MilkSupply.addMilk(100);
-        coffee.cappuccino();
+//        storage.addWater(100);
+//        storage.addMilk(100);
+//        coffee.cappuccino();
 
 //        Testing latte
-        MilkSupply.addMilk(100);
-        coffee.latte();
+//        storage.addMilk(100);
+//        coffee.latte();
 
 //        Testing grounds
-        System.out.println(CoffeeGrounds.checkGround());
-        CoffeeGrounds.cleanGround();
-        System.out.println(CoffeeGrounds.checkGround());
+//        System.out.println(storage.checkGround());
+//        storage.cleanGround();
+//        System.out.println(storage.checkGround());
 
 
     }
