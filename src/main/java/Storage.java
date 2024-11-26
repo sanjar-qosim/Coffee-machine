@@ -1,5 +1,13 @@
 public class Storage {
 
+    private static final double MAX_WATER_AMOUNT_ML = 500;
+
+    private static final double MAX_MILK_AMOUNT_ML = 500;
+
+    private static final int MAX_GRAIN_AMOUNT_PIECE = 500;
+
+    private static final double MAX_GROUND_AMOUNT_GR = 500;
+
     private double water;
 
     private double milk;
@@ -8,15 +16,15 @@ public class Storage {
 
     private double ground;
 
-    public void addWater(double water) {
-        if (this.water + water > 500) {
-            System.out.println("Запас воды полная!");
+    public void setWater(double water) {
+        if (this.water + water > MAX_WATER_AMOUNT_ML) {
+            System.out.println("Запас воды будет превышать максимального кол-во! Попробуйте по-меньше.");
         } else {
             this.water += water;
         }
     }
 
-    public double getWater(double water) {
+    public double useWater(double water) {
         if (this.water > water) {
             this.water -= water;
             return this.water;
@@ -30,15 +38,15 @@ public class Storage {
         return this.water;
     }
 
-    public void addMilk(double milk) {
-        if (this.milk > 500) {
-            System.out.println("Запас молока полная!");
+    public void setMilk(double milk) {
+        if (this.milk + milk > MAX_MILK_AMOUNT_ML) {
+            System.out.println("Запас молока будет превышать максимального кол-во! Попробуйте по-меньше.");
         } else {
             this.milk += milk;
         }
     }
 
-    public double getMilk(double milk) {
+    public double useMilk(double milk) {
         if (this.milk > milk) {
             this.milk -= milk;
             return this.milk;
@@ -52,15 +60,15 @@ public class Storage {
         return this.milk;
     }
 
-    public void addGrain(int grain) {
-        if (this.grain > 100) {
+    public void setGrain(int grain) {
+        if (this.grain > MAX_GRAIN_AMOUNT_PIECE) {
             System.out.println("Запас зерна полная!");
         } else {
             this.grain += grain;
         }
     }
 
-    public int getGrain(int grain) {
+    public int useGrain(int grain) {
         if (this.grain > grain) {
             this.grain -= grain;
             return this.grain;
@@ -78,7 +86,7 @@ public class Storage {
         this.ground = 0;
     }
 
-    public void addGround(double ground) {
+    public void setGround(double ground) {
         this.ground += ground;
     }
 

@@ -7,18 +7,21 @@ public class Interface {
 
         System.out.println("Добро пожаловать! Какое кофе предпочитаете?\n- Эспрессо;\n- Американо;\n- Каппуччинно;\n- Латте?");
 
-        String coffee = scan.nextLine();
-
-        if (coffee.equals("Эспрессо")) {
-            typesOfCoffee.espresso();
-        } else if (coffee.equals("Американо")) {
-            typesOfCoffee.americano();
-        } else if (coffee.equals("Каппуччинно")) {
-            typesOfCoffee.cappuccino();
-        } else if (coffee.equals("Латте")) {
-            typesOfCoffee.latte();
-        } else {
-            System.out.println("Некорректный input!");
+        while (true) {
+            String coffee = scan.nextLine();
+            if (coffee.equals("Эспрессо")) {
+                typesOfCoffee.espresso();
+            } else if (coffee.equals("Американо")) {
+                typesOfCoffee.americano();
+            } else if (coffee.equals("Каппуччинно")) {
+                typesOfCoffee.cappuccino();
+            } else if (coffee.equals("Латте")) {
+                typesOfCoffee.latte();
+            } else if (coffee.equals("exit")) {
+                break;
+            } else {
+                System.out.println("Такого кофе нет! Введите другой кофе или введите exit, чтобы выйти из программы.");
+            }
         }
     }
 }
