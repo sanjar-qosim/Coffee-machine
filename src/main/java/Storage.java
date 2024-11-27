@@ -87,7 +87,11 @@ public class Storage {
     }
 
     public void setGround(double ground) {
-        this.ground += ground;
+        if (this.ground + ground > MAX_GROUND_AMOUNT_GR) {
+            System.out.println("Гуща заполнена! Очистите пожалуйста гущу!");
+        } else {
+            this.ground += ground;
+        }
     }
 
     public double checkGround(){
