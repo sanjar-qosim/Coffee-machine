@@ -9,17 +9,18 @@ public class CoffeeMachine {
 
     public String askCoffee(){
         System.out.println("Какое кофе предпочитаете?\n- Эспрессо;\n- Американо;\n- Каппуччинно;\n- Латте?");
-        String askedCoffee = scanner.nextLine();
         while (true) {
+            String askedCoffee = scanner.nextLine();
             if (askedCoffee.equals("Эспрессо") || askedCoffee.equals("Американо") || askedCoffee.equals("Каппуччинно") || askedCoffee.equals("Латте")) {
                 this.coffee = askedCoffee;
                 return this.coffee;
-            } else if (this.coffee.equals("exit")) {
-                return null;
+            } else if (askedCoffee.equals("exit")) {
+                break;
             } else {
                 System.out.println("Такого кофе нет! Введите другой кофе или введите exit, чтобы выйти из программы.");
             }
         }
+        return null;
     }
 
     double espressoWater = espresso.getWater();
