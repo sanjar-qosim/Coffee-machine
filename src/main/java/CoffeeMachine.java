@@ -23,16 +23,47 @@ public class CoffeeMachine {
         return null;
     }
 
-    double espressoWater = espresso.getWater();
-    int espressoGrain = espresso.getGrain();
-    double espressoMilk = espresso.getMilk();
-    double espressoGround = espresso.getGround();
+    private double water;
+    private int grain;
+    private double milk;
+    private double ground;
+
+    public void defCoffee(String askedCoffee){
+        switch (askedCoffee) {
+            case "Эспрессо":
+                this.water = TypeOfCoffee.ESPRESSO.getWater();
+                this.grain = TypeOfCoffee.ESPRESSO.getGrain();
+                this.milk = TypeOfCoffee.ESPRESSO.getMilk();
+                this.ground = TypeOfCoffee.ESPRESSO.getGround();
+                break;
+            case "Американо":
+                this.water = TypeOfCoffee.AMERICANO.getWater();
+                this.grain = TypeOfCoffee.AMERICANO.getGrain();
+                this.milk = TypeOfCoffee.AMERICANO.getMilk();
+                this.ground = TypeOfCoffee.AMERICANO.getGround();
+                break;
+            case "Каппуччинно":
+                this.water = TypeOfCoffee.CAPPUCCINO.getWater();
+                this.grain = TypeOfCoffee.CAPPUCCINO.getGrain();
+                this.milk = TypeOfCoffee.CAPPUCCINO.getMilk();
+                this.ground = TypeOfCoffee.CAPPUCCINO.getGround();
+                break;
+            case "Латте":
+                this.water = TypeOfCoffee.LATTE.getWater();
+                this.grain = TypeOfCoffee.LATTE.getGrain();
+                this.milk = TypeOfCoffee.LATTE.getMilk();
+                this.ground = TypeOfCoffee.LATTE.getGround();
+                break;
+            default:
+                System.out.println("Такого кофе нет!");
+        }
+    }
 
     public boolean checkStorage(){
-        if (this.espressoWater >= storage.checkWater()) {
-            if (this.espressoGrain >= storage.checkGrain()) {
-                if (this.espressoMilk >= storage.checkMilk()) {
-                    if (this.espressoGround <= storage.checkGround()) {
+        if (this.water <= storage.checkWater()) {
+            if (this.grain <= storage.checkGrain()) {
+                if (this.milk <= storage.checkMilk()) {
+                    if (this.ground >= storage.checkGround()) {
                         System.out.println("Все ингредиенты есть!");
                         return true;
                     } else {
@@ -54,9 +85,10 @@ public class CoffeeMachine {
     }
 
     public void supplyStorage(){
-        storage.setWater(this.espressoWater);
-        storage.setGrain(this.espressoGrain);
-        storage.setMilk(this.espressoMilk);
+        storage.setWater(this.water);
+        storage.setGrain(this.grain);
+        storage.setMilk(this.milk);
         storage.cleanGround();
+        System.out.println("Все ингредиенты пополнены!");
     }
 }
