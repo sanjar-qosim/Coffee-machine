@@ -6,6 +6,10 @@ public class CoffeeMachine {
     Scanner scanner = new Scanner(System.in);
 
     private String coffee;
+    private double water;
+    private int grain;
+    private double milk;
+    private double ground;
 
     public String askCoffee(){
         System.out.println("Какое кофе предпочитаете?\n- Эспрессо;\n- Американо;\n- Каппуччинно;\n- Латте?");
@@ -22,11 +26,6 @@ public class CoffeeMachine {
         }
         return null;
     }
-
-    private double water;
-    private int grain;
-    private double milk;
-    private double ground;
 
     public void defCoffee(String askedCoffee){
         switch (askedCoffee) {
@@ -64,7 +63,6 @@ public class CoffeeMachine {
             if (this.grain <= storage.checkGrain()) {
                 if (this.milk <= storage.checkMilk()) {
                     if (this.ground >= storage.checkGround()) {
-                        System.out.println("Все ингредиенты есть!");
                         return true;
                     } else {
                         System.out.println("Очистите гущу!");
@@ -90,5 +88,17 @@ public class CoffeeMachine {
         storage.setMilk(this.milk);
         storage.cleanGround();
         System.out.println("Все ингредиенты пополнены!");
+    }
+
+    public void showStorage(){
+        System.out.println("Water: " + storage.checkWater() + "\nMilk: " + storage.checkMilk() + "\nGrain: " + storage.checkGrain() + "\nGround: " + storage.checkGround());
+    }
+
+    public void brewCoffee(){
+        storage.useWater(water);
+        storage.useGrain(grain);
+        storage.setGround(ground);
+        storage.useMilk(milk);
+        System.out.println("Ваше " + coffee + " готово!");
     }
 }

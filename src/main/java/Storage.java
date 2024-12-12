@@ -25,7 +25,7 @@ public class Storage {
     }
 
     public double useWater(double water) {
-        if (this.water > water) {
+        if (this.water >= water) {
             this.water -= water;
             return this.water;
         } else {
@@ -47,7 +47,7 @@ public class Storage {
     }
 
     public double useMilk(double milk) {
-        if (this.milk > milk) {
+        if (this.milk >= milk) {
             this.milk -= milk;
             return this.milk;
         } else {
@@ -69,7 +69,7 @@ public class Storage {
     }
 
     public int useGrain(int grain) {
-        if (this.grain > grain) {
+        if (this.grain >= grain) {
             this.grain -= grain;
             return this.grain;
         } else {
@@ -87,7 +87,7 @@ public class Storage {
     }
 
     public void setGround(double ground) {
-        if (this.ground + ground > MAX_GROUND_AMOUNT_GR) {
+        if (this.ground + ground >= MAX_GROUND_AMOUNT_GR) {
             System.out.println("Гуща заполнена! Очистите пожалуйста гущу!");
         } else {
             this.ground += ground;
