@@ -28,34 +28,11 @@ public class CoffeeMachine {
     }
 
     public void defCoffee(String askedCoffee){
-        switch (askedCoffee) {
-            case "Эспрессо":
-                this.water = TypeOfCoffee.ESPRESSO.getWater();
-                this.grain = TypeOfCoffee.ESPRESSO.getGrain();
-                this.milk = TypeOfCoffee.ESPRESSO.getMilk();
-                this.ground = TypeOfCoffee.ESPRESSO.getGround();
-                break;
-            case "Американо":
-                this.water = TypeOfCoffee.AMERICANO.getWater();
-                this.grain = TypeOfCoffee.AMERICANO.getGrain();
-                this.milk = TypeOfCoffee.AMERICANO.getMilk();
-                this.ground = TypeOfCoffee.AMERICANO.getGround();
-                break;
-            case "Каппуччинно":
-                this.water = TypeOfCoffee.CAPPUCCINO.getWater();
-                this.grain = TypeOfCoffee.CAPPUCCINO.getGrain();
-                this.milk = TypeOfCoffee.CAPPUCCINO.getMilk();
-                this.ground = TypeOfCoffee.CAPPUCCINO.getGround();
-                break;
-            case "Латте":
-                this.water = TypeOfCoffee.LATTE.getWater();
-                this.grain = TypeOfCoffee.LATTE.getGrain();
-                this.milk = TypeOfCoffee.LATTE.getMilk();
-                this.ground = TypeOfCoffee.LATTE.getGround();
-                break;
-            default:
-                System.out.println("Такого кофе нет!");
-        }
+        TypeOfCoffee type = TypeOfCoffee.getByName(askedCoffee);
+        water = type.getWater();
+        grain = type.getGrain();
+        milk = type.getMilk();
+        ground = type.getGround();
     }
 
     public boolean checkStorage(){
