@@ -16,7 +16,7 @@ public class Storage {
 
     private double ground;
 
-    public void setWater(double water) {
+    public void addWater(double water) {
         if (this.water + water > MAX_WATER_AMOUNT_ML) {
             System.out.println("Запас воды будет превышать максимального кол-во! Попробуйте по-меньше.");
         } else {
@@ -38,7 +38,7 @@ public class Storage {
         return this.water;
     }
 
-    public void setMilk(double milk) {
+    public void addMilk(double milk) {
         if (this.milk + milk > MAX_MILK_AMOUNT_ML) {
             System.out.println("Запас молока будет превышать максимального кол-во! Попробуйте по-меньше.");
         } else {
@@ -60,7 +60,7 @@ public class Storage {
         return this.milk;
     }
 
-    public void setGrain(int grain) {
+    public void addGrain(int grain) {
         if (this.grain > MAX_GRAIN_AMOUNT_PIECE) {
             System.out.println("Запас зерна полная!");
         } else {
@@ -86,7 +86,7 @@ public class Storage {
         this.ground = 0;
     }
 
-    public void setGround(double ground) {
+    public void addGround(double ground) {
         if (this.ground + ground >= MAX_GROUND_AMOUNT_GR) {
             System.out.println("Гуща заполнена! Очистите пожалуйста гущу!");
         } else {

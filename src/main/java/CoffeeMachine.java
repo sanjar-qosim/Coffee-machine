@@ -1,3 +1,4 @@
+import java.io.StringWriter;
 import java.util.Scanner;
 
 public class CoffeeMachine {
@@ -10,6 +11,26 @@ public class CoffeeMachine {
     private int grain;
     private double milk;
     private double ground;
+
+    public void prepareCoffee(){
+        while (true) {
+            if (checkStorage()) {
+                brewCoffee();
+                break;
+            } else {
+                System.out.println("Не хватает ингредиентов! Хотите заполнить все необходимое?\n- Да\n- Нет");
+                String askSupply = scanner.nextLine();
+                if (askSupply.equals("Да")){
+                    supplyStorage();
+                } else if (askSupply.equals("Нет")) {
+                    System.out.println("Всего доброго!");
+                    break;
+                } else {
+                    System.out.println("Не хватает ингредиентов! Хотите заполнить все необходимое?\n- Да\n- Нет");
+                }
+            }
+        }
+    }
 
     public String askCoffee(){
         System.out.println("Какое кофе предпочитаете?\n- Эспрессо;\n- Американо;\n- Каппуччинно;\n- Латте?");
@@ -36,33 +57,29 @@ public class CoffeeMachine {
     }
 
     public boolean checkStorage(){
-        if (this.water <= storage.checkWater()) {
-            if (this.grain <= storage.checkGrain()) {
-                if (this.milk <= storage.checkMilk()) {
-                    if (this.ground >= storage.checkGround()) {
-                        return true;
-                    } else {
-                        System.out.println("Очистите гущу!");
-                        return false;
-                    }
-                } else {
-                    System.out.println("Недостаточно молока!");
-                    return false;
-                }
-            } else {
-                System.out.println("Недостаточно зерна!");
-                return false;
-            }
-        } else {
+        if (water > storage.checkWater()) {
             System.out.println("Недостаточно воды!");
             return false;
         }
+        if (grain > storage.checkGrain()) {
+            System.out.println("Недостаточно зерна!");
+            return false;
+        }
+        if (milk > storage.checkMilk()) {
+            System.out.println("Недостаточно молока!");
+            return false;
+        }
+        if (ground < storage.checkGround()) {
+            System.out.println("Очистите гущу!");
+            return false;
+        }
+        return true;
     }
 
     public void supplyStorage(){
-        storage.setWater(this.water);
-        storage.setGrain(this.grain);
-        storage.setMilk(this.milk);
+        storage.addWater(water);
+        storage.addGrain(grain);
+        storage.addMilk(milk);
         storage.cleanGround();
         System.out.println("Все ингредиенты пополнены!");
     }
@@ -74,7 +91,7 @@ public class CoffeeMachine {
     public void brewCoffee(){
         storage.useWater(water);
         storage.useGrain(grain);
-        storage.setGround(ground);
+        storage.addGround(ground);
         storage.useMilk(milk);
         System.out.println("Ваше " + coffee + " готово!");
     }
